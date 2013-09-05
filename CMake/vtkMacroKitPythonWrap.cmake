@@ -58,10 +58,11 @@ macro(vtkMacroKitPythonWrap)
     add_library(${MY_KIT_NAME}PythonD ${KitPython_SRCS} ${MY_KIT_PYTHON_EXTRA_SRCS})
 
     set(VTK_KIT_PYTHON_LIBRARIES)
-    foreach(c ${VTK_LIBRARIES})
-      list(APPEND VTK_KIT_PYTHON_LIBRARIES ${c}PythonD)
-    endforeach()
-    target_link_libraries(${MY_KIT_NAME}PythonD ${MY_KIT_NAME} vtkPythonCore ${VTK_PYTHON_LIBRARIES}  ${VTK_KIT_PYTHON_LIBRARIES} ${MY_KIT_PYTHON_LIBRARIES})
+    #foreach(c ${VTK_LIBRARIES})
+    #  list(APPEND VTK_KIT_PYTHON_LIBRARIES ${c}PythonD)
+    #endforeach()
+
+    target_link_libraries(${MY_KIT_NAME}PythonD ${MY_KIT_NAME} vtkWrappingPythonCore ${VTK_PYTHON_LIBRARIES}  ${VTK_KIT_PYTHON_LIBRARIES} ${MY_KIT_PYTHON_LIBRARIES})
 
     install(TARGETS ${MY_KIT_NAME}PythonD
       RUNTIME DESTINATION ${MY_KIT_INSTALL_BIN_DIR} COMPONENT RuntimeLibraries
